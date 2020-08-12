@@ -25,14 +25,21 @@ namespace NewsPortal.Models
             _context.SaveChanges();
         }
 
-        public IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews)
+        public IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews, string category = "")
         {
             IEnumerable<NewsArticle> latestNews = _context.NewsArticles.OrderByDescending(d => d.PublishDate);
             int totalLatestNews = latestNews.Count();
 
-            if (totalLatestNews < numberOfLatestNews)
+            if (totalLatestNews < numberOfLatestNews || numberOfLatestNews == 0)
             {
                 numberOfLatestNews = totalLatestNews;
+            }
+
+            if (!String.IsNullOrWhiteSpace(category))
+            {
+                latestNews = from news in latestNews
+                             where news.Category == category
+                             select news;
             }
 
             latestNews = latestNews.ToList().GetRange(0, numberOfLatestNews);
@@ -81,6 +88,11 @@ namespace NewsPortal.Models
             }
 
             return newsSearchResult;
+        }
+
+        public IEnumerable<NewsCategory> GetNewsCategories()
+        {
+            return _context.NewsCategories;
         }
     }
 }

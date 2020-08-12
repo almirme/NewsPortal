@@ -12,6 +12,8 @@ namespace NewsPortal.Common
     {
         public static string Home_Index => "Index";
 
+        public static string Home_NewsList => "NewsList";
+
         public static string NewsAdmin_Index => "IndexAdmin";
 
         public static string NewsAdmin_NewsForm => "NewsForm";

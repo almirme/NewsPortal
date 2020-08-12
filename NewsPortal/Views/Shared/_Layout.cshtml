@@ -1,5 +1,7 @@
 ﻿@{ 
     NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
+    NewsPortal.Models.ApplicationDbContext context = new NewsPortal.Models.ApplicationDbContext();
+    IEnumerable<NewsPortal.Models.NewsCategory> newsCategories = context.NewsCategories;
 }
 <!DOCTYPE html>
 <html>
@@ -25,13 +27,24 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @* TODO show news categories *@
-                    <li>@Html.Partial(NewsPortal.Common.PartialViewName.Search, 
-                        new NewsPortal.Models.SearchViewModel 
-                        {  
-                            ActionName = NewsPortal.Common.ActionName.Home_NewsList, 
-                            ControllerName = NewsPortal.Common.ControllerName.Home
-                        })
+                    @foreach (NewsPortal.Models.NewsCategory newsCategory in newsCategories)
+                    {
+                        <li>
+                            @Html.ActionLink(newsCategory.Name,
+                                         NewsPortal.Common.ActionName.Home_NewsInCategory,
+                                         NewsPortal.Common.ControllerName.Home,
+                                         new { newsCategory.Id },
+                                         null)
+                        </li>
+                    }
+
+                    <li>
+                        @Html.Partial(NewsPortal.Common.PartialViewName.Search,
+                    new NewsPortal.Models.SearchViewModel
+                    {
+                        ActionName = NewsPortal.Common.ActionName.Home_NewsList,
+                        ControllerName = NewsPortal.Common.ControllerName.Home
+                    })
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")

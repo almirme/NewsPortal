@@ -1,4 +1,5 @@
-﻿using NewsPortal.Models;
+﻿using NewsPortal.Common;
+using NewsPortal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +37,27 @@ namespace NewsPortal.Controllers
             NewsListViewModel newsListView = new NewsListViewModel
             {
                 NewsArticles = articles,
+                NewsCategories = _repository.GetNewsCategories().ToList(),
                 ListCriteria = $"{_uiMessages.SearchResultFor}: {searchViewModel.SearchTerm}",
             };
 
-            return View(newsListView);
+            return View(ViewName.Home_NewsList, newsListView);
+        }
+
+        public ActionResult NewsInCategory(int categoryId)
+        {
+            string category = _repository.GetNewsCategories().SingleOrDefault(x => x.Id == categoryId).Name;
+
+            List<NewsArticle> allNewsInCategory = _repository.GetLatest(0, category).ToList();
+
+            NewsListViewModel newsListView = new NewsListViewModel
+            {
+                NewsArticles = allNewsInCategory,
+                NewsCategories = _repository.GetNewsCategories().ToList(),
+                ListCriteria = $"{_uiMessages.SearchResultFor}: {category}",
+            };
+
+            return View(ViewName.Home_NewsList, newsListView);
         }
     }
 }

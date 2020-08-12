@@ -9,7 +9,7 @@ namespace NewsPortal.Tests.Fakes
 {
     class FakeNewsRepository : INewsRepository
     {
-        public IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews)
+        public IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews, string category)
         {
             List<NewsArticle> articlesByDate = _inMemoryNews.OrderBy(article => article.PublishDate).ToList();
             return articlesByDate.GetRange(0, numberOfLatestNews);
@@ -43,6 +43,11 @@ namespace NewsPortal.Tests.Fakes
         }
 
         public IEnumerable<NewsArticle> GetAllThatContain(string searchTerm, string author = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<NewsCategory> GetNewsCategories()
         {
             throw new NotImplementedException();
         }

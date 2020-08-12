@@ -9,7 +9,7 @@ namespace NewsPortal.Models
     {
         NewsArticle GetById(int id);
 
-        IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews);
+        IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews, string category = "");
 
         IEnumerable<NewsArticle> GetAllForUser(string username);
 
@@ -18,5 +18,7 @@ namespace NewsPortal.Models
         void AddNew(NewsArticle newsArticle);
 
         void Update(NewsArticle newsArticle);
+
+        IEnumerable<NewsCategory> GetNewsCategories();
     }
 }

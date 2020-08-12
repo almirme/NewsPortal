@@ -39,13 +39,14 @@ else
             <tr>
                 <td>@newsArticle.PublishDate</td>
                 <td>@newsArticle.Title</td>
+                <td>@newsArticle.Category</td>
                 <td>
                     @Html.ActionLink(uiMessages.Edit,
                                  NewsPortal.Common.ActionName.NewsAdmin_EditNews,
                                  NewsPortal.Common.ControllerName.NewsAdmin,
                                  new { newsArticle.Id },
                                  null)
-            </td>
+                </td>
             </tr>
             }
         </tbody>
