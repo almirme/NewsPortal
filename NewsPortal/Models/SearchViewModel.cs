@@ -12,9 +12,5 @@ namespace NewsPortal.Models
         public string ControllerName { get; set; }
 
         public string ActionName { get; set; }
-
-        public string TextBoxClass { get; set; }
-
-        public string ButtonClass { get; set; }
     }
 }
