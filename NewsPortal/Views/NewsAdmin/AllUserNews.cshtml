@@ -5,6 +5,8 @@
     @Html.ActionLink("Add news", "New", "NewsAdmin", null, new { @class = "btn btn-primary" })
 </p>
 
+@Html.Partial("_Search", new NewsPortal.Models.SearchViewModel { ActionName = "Search", ControllerName = "Home" })
+
 @if (!Model.Any())
 {// TODO GUI message
     <p>You don't have any news yet.</p>
@@ -22,11 +24,11 @@ else
         <tbody>
             @foreach (var newsArticle in Model)
             {
-            <tr>
-                <td>@newsArticle.PublishDate</td>
-                <td>@newsArticle.Title</td>
-                <td>@Html.ActionLink("Edit", "")</td>
-            </tr>
+                <tr>
+                    <td>@newsArticle.PublishDate</td>
+                    <td>@newsArticle.Title</td>
+                    <td>@Html.ActionLink("Edit", "")</td>
+                </tr>
             }
         </tbody>
     </table>

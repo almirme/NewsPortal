@@ -208,6 +208,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsArticle.cs" />
     <Compile Include="Models\NewsCategory.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\UIMessages.cs" />
     <Compile Include="Models\UIMessagesEnglish.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -272,6 +273,7 @@
     <Content Include="Views\NewsAdmin\AllUserNews.cshtml" />
     <Content Include="Views\Shared\_ArticlePreview.cshtml" />
     <Content Include="Views\Home\SingleNews.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,5 +27,10 @@ namespace NewsPortal.Controllers
 
             return View(article);
         }
+
+        public ActionResult Search(SearchViewModel searchViewModel)
+        {
+            return View(_repository);
+        }
     }
 }

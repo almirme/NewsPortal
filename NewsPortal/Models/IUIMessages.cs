@@ -11,5 +11,7 @@ namespace NewsPortal.Models
         string CompanyName { get; }
 
         string WelcomeToWebsiteMessage { get; }
+
+        string Search { get; }
     }
 }

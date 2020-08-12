@@ -1,0 +1,12 @@
+﻿@model NewsPortal.Models.SearchViewModel
+@{ 
+    NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
+}
+
+@using (Html.BeginForm(Model.ActionName, Model.ControllerName, FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+{
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.SearchTerm, new { @class = "form-control", placeholder = "Search" })
+    </div>
+    <button class="btn btn-default" type="submit">@uiMessages.Search</button>
+}

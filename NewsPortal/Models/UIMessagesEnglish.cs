@@ -19,5 +19,7 @@ namespace NewsPortal.Models
         public string CompanyName => "ABCD News";
 
         public string WelcomeToWebsiteMessage => $"Welcome to {CompanyName}";
+
+        public string Search => "Search";
     }
 }

@@ -56,5 +56,10 @@ namespace NewsPortal.Controllers
 
             return RedirectToAction("Index", this.ControllerName);
         }
+
+        public ActionResult Search(SearchViewModel searchViewModel)
+        {
+            return View();
+        }
     }
 }
