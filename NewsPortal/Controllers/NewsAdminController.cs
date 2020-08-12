@@ -41,9 +41,13 @@ namespace NewsPortal.Controllers
             NewsArticle article = _repository.GetById(id);
 
             if (article == null)
+            {
                 return HttpNotFound();
-
-            return View(ViewName.NewsAdmin_NewsForm, article);
+            }
+            else
+            {
+                return View(ViewName.NewsAdmin_NewsForm, article);
+            }
         }
 
         [HttpPost]
