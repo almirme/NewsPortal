@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NewsPortal.Models.NewsArticle>
+
+<h2>AllUserNews</h2>
+@if (!Model.Any())
+{// TODO GUI message
+    <p>We don't have any customers yet.</p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Add news", "New", "Customers", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>News</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var newsArticle in Model)
+            {
+                <tr>
+                    <td>@newsArticle.PublishDate</td>
+                    <td>@newsArticle.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
