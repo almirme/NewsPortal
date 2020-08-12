@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<NewsPortal.Models.NewsArticle>
 
-<h2>AllUserNews</h2>
+<h2>All News</h2>
+<p>
+    @Html.ActionLink("Add news", "New", "Customers", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (!Model.Any())
 {// TODO GUI message
-    <p>We don't have any customers yet.</p>
+    <p>You don't have any news yet.</p>
 }
 else
 {
-    <p>
-        @Html.ActionLink("Add news", "New", "Customers", null, new { @class = "btn btn-primary" })
-    </p>
+    
 
     <table class="table table-bordered table-hover">
         <thead>
