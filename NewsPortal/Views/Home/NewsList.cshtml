@@ -3,14 +3,21 @@
     NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
 }
 
-<h2>NewsList</h2>
+<h2>@(!String.IsNullOrWhiteSpace(Model.SearchTerm) ? $"Search result for {Model.SearchTerm}" : "Lisa")</h2>
 
 <div class="list-group">
     @foreach (NewsPortal.Models.NewsArticle article in Model.NewsArticles)
     {
         <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">List group item heading</h4>
-            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <div class="search-list-wrapper">
+                <div class="search-list-image-div">
+                    <img class="search-list-image" src="@article.PictureUrl" alt="@article.Title" />
+                </div>
+                <div class="search-list-text">
+                    <h4 class="list-group-item-heading">@article.Title</h4>
+                    <p class="list-group-item-text">@article.PublishDate</p>
+                </div>
+            </div>
         </a>
     }
 </div>

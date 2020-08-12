@@ -35,7 +35,15 @@ namespace NewsPortal.Controllers
 
         public ActionResult NewsList()
         {
-            return View(_repository);
+            List<NewsArticle> articles = _repository.GetLatest(10).ToList();
+
+            NewsListViewModel newsListView = new NewsListViewModel
+            {
+                NewsArticles = articles,
+                SearchTerm = ""
+            };
+
+            return View(newsListView);
         }
     }
 }

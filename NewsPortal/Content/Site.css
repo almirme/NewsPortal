@@ -26,3 +26,30 @@ textarea {
 .margin-15px-0px {
     margin: 15px 0px;
 }
+
+.search-list-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.search-list-image-div {
+    overflow: hidden;
+    width: 100px;
+}
+
+.search-list-image {
+    height: 100px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.search-list-text {
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    height: 100px;
+    margin: 0px 10px;
+}
+
+
