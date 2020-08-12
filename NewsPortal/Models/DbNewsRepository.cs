@@ -28,6 +28,13 @@ namespace NewsPortal.Models
         public IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews)
         {
             IEnumerable<NewsArticle> latestNews = _context.NewsArticles.OrderByDescending(d => d.PublishDate);
+            int totalLatestNews = latestNews.Count();
+
+            if (totalLatestNews < numberOfLatestNews)
+            {
+                numberOfLatestNews = totalLatestNews;
+            }
+
             latestNews = latestNews.ToList().GetRange(0, numberOfLatestNews);
 
             return latestNews;

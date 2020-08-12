@@ -18,7 +18,14 @@ namespace NewsPortal.Controllers
 
         public ViewResult Index()
         {
-            return View();
+            return View(_repository);
+        }
+
+        public ActionResult SingleNews(int id)
+        {
+            NewsArticle article = _repository.GetById(id);
+
+            return View(article);
         }
     }
 }

@@ -1,8 +1,18 @@
-﻿@{
+﻿@model NewsPortal.Models.INewsRepository
+@{
     NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
 }
 
 <div><h3>@uiMessages.WelcomeToWebsiteMessage</h3></div>
 <div class="row">
+@{
+    IEnumerable<NewsPortal.Models.NewsArticle> news = Model.GetLatest(3);
 
+    foreach (NewsPortal.Models.NewsArticle article in news)
+    {
+        <div class="col-md-4">
+            @Html.Partial("_ArticlePreview", article)
+        </div>
+    }
+}
 </div>

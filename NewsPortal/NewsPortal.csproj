@@ -270,6 +270,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\NewsAdmin\NewsForm.cshtml" />
     <Content Include="Views\NewsAdmin\AllUserNews.cshtml" />
+    <Content Include="Views\Shared\_ArticlePreview.cshtml" />
+    <Content Include="Views\Home\SingleNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
