@@ -3,7 +3,7 @@
     NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
 }
 
-<h2>@(!String.IsNullOrWhiteSpace(Model.ListCriteria) ? $"Search result for {Model.ListCriteria}" : "")</h2>
+<h2>@Model.ListCriteria</h2>
 
 <div class="list-group">
     @foreach (NewsPortal.Models.NewsArticle article in Model.NewsArticles)
@@ -14,6 +14,7 @@
                     <img class="search-list-image" src="@article.PictureUrl" alt="@article.Title" />
                 </div>
                 <div class="search-list-text">
+                    <p class="search-list-text-category">@article.Category</p>
                     <h4 class="list-group-item-heading">@article.Title</h4>
                     <p class="list-group-item-text">@article.PublishDate</p>
                 </div>

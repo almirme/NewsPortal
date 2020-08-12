@@ -21,5 +21,7 @@ namespace NewsPortal.Models
         public string WelcomeToWebsiteMessage => $"Welcome to {CompanyName}";
 
         public string Search => "Search";
+
+        public string Edit => "Edit";
     }
 }

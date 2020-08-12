@@ -1,8 +1,7 @@
-﻿using NewsPortal.Models;
+﻿using NewsPortal.Common;
+using NewsPortal.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NewsPortal.Controllers
@@ -11,9 +10,6 @@ namespace NewsPortal.Controllers
     public class NewsAdminController : Controller
     {
         INewsRepository _repository;
-        private readonly string SingleNewsView = "NewsForm";
-        private readonly string AllNewsForUserView = "AllUserNews";
-        private readonly string ControllerName = "NewsAdmin";
 
         public NewsAdminController(INewsRepository repository)
         {
@@ -23,14 +19,13 @@ namespace NewsPortal.Controllers
         public ActionResult Index()
         {
             IEnumerable<NewsArticle> all = _repository.GetAllForUser(User.Identity.Name);
-            return View(AllNewsForUserView, all);
+
+            return View(ViewName.NewsAdmin_Index, all);
         }
 
         public ActionResult New()
         {
-            NewsArticle test = new NewsArticle();
-
-            return View(SingleNewsView, test);
+            return View(ViewName.NewsAdmin_NewsForm, new NewsArticle());
         }
 
         [HttpPost]
@@ -39,7 +34,7 @@ namespace NewsPortal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(SingleNewsView, newsArticle);
+                return View(ViewName.NewsAdmin_NewsForm, newsArticle);
             }
 
             if (newsArticle.Id == 0)
@@ -54,12 +49,7 @@ namespace NewsPortal.Controllers
                 _repository.Update(newsArticle);
             }
 
-            return RedirectToAction("Index", this.ControllerName);
-        }
-
-        public ActionResult Search(SearchViewModel searchViewModel)
-        {
-            return View();
+            return RedirectToAction(ViewName.NewsAdmin_Index, ControllerName.NewsAdmin);
         }
     }
 }

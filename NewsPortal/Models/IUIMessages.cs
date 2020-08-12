@@ -13,5 +13,9 @@ namespace NewsPortal.Models
         string WelcomeToWebsiteMessage { get; }
 
         string Search { get; }
+
+        string Edit { get; }
+
+        string SearchResultFor { get; }
     }
 }

@@ -1,9 +1,22 @@
 ﻿@model IEnumerable<NewsPortal.Models.NewsArticle>
+@{
+    NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
+}
 
 <h2>All News</h2>
 <ul class="nav navbar-nav margin-15px-0px">
-    <li>@Html.ActionLink("Add news", "New", "NewsAdmin", null, new { @class = "btn btn-primary" })</li>
-    <li>@Html.Partial("_Search", new NewsPortal.Models.SearchViewModel { ActionName = "Search", ControllerName = "Home" })</li>
+    <li>
+        @Html.ActionLink("Add news", "New", NewsPortal.Common.ControllerName.NewsAdmin,
+   null, new { @class = "btn btn-primary" })
+</li>
+<li>
+    @Html.Partial("_Search",
+new NewsPortal.Models.SearchViewModel
+{
+   ActionName = NewsPortal.Common.ViewName.NewsAdmin_Index,
+   ControllerName = NewsPortal.Common.ControllerName.NewsAdmin
+})
+</li>
 </ul>
 
 @if (!Model.Any())
@@ -26,7 +39,7 @@ else
                 <tr>
                     <td>@newsArticle.PublishDate</td>
                     <td>@newsArticle.Title</td>
-                    <td>@Html.ActionLink("Edit", "")</td>
+                    <td>@Html.ActionLink(uiMessages.Edit, "")</td>
                 </tr>
             }
         </tbody>
