@@ -207,6 +207,14 @@
     <Compile Include="Migrations\202008122058443_SeedUsers.Designer.cs">
       <DependentUpon>202008122058443_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008122236458_AddNewsCategories.cs" />
+    <Compile Include="Migrations\202008122236458_AddNewsCategories.Designer.cs">
+      <DependentUpon>202008122236458_AddNewsCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008122252413_SeedNewsCategories.cs" />
+    <Compile Include="Migrations\202008122252413_SeedNewsCategories.Designer.cs">
+      <DependentUpon>202008122252413_SeedNewsCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DbNewsRepository.cs" />
@@ -313,6 +321,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008122058443_SeedUsers.resx">
       <DependentUpon>202008122058443_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008122236458_AddNewsCategories.resx">
+      <DependentUpon>202008122236458_AddNewsCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008122252413_SeedNewsCategories.resx">
+      <DependentUpon>202008122252413_SeedNewsCategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
