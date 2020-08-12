@@ -42,7 +42,7 @@ namespace NewsPortal.Tests.Fakes
             return _inMemoryNews.FindAll(article => article.Author == userFullName);
         }
 
-        public IEnumerable<NewsArticle> GetAllThatContain(string searchTerm)
+        public IEnumerable<NewsArticle> GetAllThatContain(string searchTerm, string author = "")
         {
             throw new NotImplementedException();
         }

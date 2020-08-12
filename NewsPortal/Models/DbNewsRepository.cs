@@ -66,12 +66,19 @@ namespace NewsPortal.Models
             return latestNews;
         }
 
-        public IEnumerable<NewsArticle> GetAllThatContain(string searchTerm)
+        public IEnumerable<NewsArticle> GetAllThatContain(string searchTerm, string author = "")
         {
             IEnumerable<NewsArticle> newsSearchResult = from news in _context.NewsArticles
                                                         where news.Title.Contains(searchTerm) 
                                                         || news.Content.Contains(searchTerm)
                                                         select news;
+
+            if (!String.IsNullOrEmpty(author))
+            {
+                newsSearchResult = from news in newsSearchResult
+                                   where news.Author == author
+                                   select news;
+            }
 
             return newsSearchResult;
         }

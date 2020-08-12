@@ -13,7 +13,7 @@ namespace NewsPortal.Models
 
         IEnumerable<NewsArticle> GetAllForUser(string username);
 
-        IEnumerable<NewsArticle> GetAllThatContain(string searchTerm);
+        IEnumerable<NewsArticle> GetAllThatContain(string searchTerm, string author = "");
 
         void AddNew(NewsArticle newsArticle);
 

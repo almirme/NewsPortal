@@ -16,11 +16,19 @@ namespace NewsPortal.Controllers
             _repository = repository;
         }
 
-        public ActionResult IndexAdmin()
+        public ActionResult IndexAdmin(SearchViewModel searchViewModel)
         {
-            IEnumerable<NewsArticle> all = _repository.GetAllForUser(User.Identity.Name);
+            IEnumerable<NewsArticle> newsOfAuthor;
+            if (String.IsNullOrWhiteSpace(searchViewModel.SearchTerm))
+            {
+                newsOfAuthor = _repository.GetAllForUser(User.Identity.Name);
+            }
+            else
+            {
+                newsOfAuthor = _repository.GetAllThatContain(searchViewModel.SearchTerm, User.Identity.Name);
+            }
 
-            return View(ViewName.NewsAdmin_Index, all);
+            return View(ViewName.NewsAdmin_Index, newsOfAuthor);
         }
 
         public ActionResult NewNews()
