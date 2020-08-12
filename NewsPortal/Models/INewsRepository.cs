@@ -5,7 +5,7 @@ using System.Web;
 
 namespace NewsPortal.Models
 {
-    interface INewsRepository
+    public interface INewsRepository
     {
         IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews);
     }

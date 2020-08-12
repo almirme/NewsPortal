@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewsPortal.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,13 @@ namespace NewsPortal.Controllers
 {
     public class HomeController : Controller
     {
+        INewsRepository _repository;
+
+        public HomeController(INewsRepository repository)
+        {
+            _repository = repository;
+        }
+
         public ActionResult Index()
         {
             return View();
