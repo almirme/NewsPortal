@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<NewsPortal.Models.NewsArticle>
 
 <h2>All News</h2>
-<p>
-    @Html.ActionLink("Add news", "New", "NewsAdmin", null, new { @class = "btn btn-primary" })
-</p>
-
-@Html.Partial("_Search", new NewsPortal.Models.SearchViewModel { ActionName = "Search", ControllerName = "Home" })
+<ul class="nav navbar-nav margin-15px-0px">
+    <li>@Html.ActionLink("Add news", "New", "NewsAdmin", null, new { @class = "btn btn-primary" })</li>
+    <li>@Html.Partial("_Search", new NewsPortal.Models.SearchViewModel { ActionName = "Search", ControllerName = "Home" })</li>
+</ul>
 
 @if (!Model.Any())
 {// TODO GUI message
@@ -18,7 +17,7 @@ else
             <tr>
                 <th>Date</th>
                 <th>Title</th>
-                <th>Edit</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
