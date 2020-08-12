@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewsPortal;
 using NewsPortal.Controllers;
+using NewsPortal.Tests.Fakes;
 
 namespace NewsPortal.Tests.Controllers
 {
@@ -15,11 +16,28 @@ namespace NewsPortal.Tests.Controllers
         [TestMethod]
         public void Index_OnRequest_ReturnsView()
         {
-            HomeController controller = new HomeController();
+            HomeController controller = CreateTestHomeController();
 
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Index();
 
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Index_OnRequest_ReturnsLatestNews()
+        {
+            HomeController controller = CreateTestHomeController();
+
+            ViewResult result = controller.Index();
+            //result.Model
+
+            Assert.Fail();
+        }
+
+        private HomeController CreateTestHomeController()
+        {
+            FakeNewsRepository fakeNewsRepository = new FakeNewsRepository();
+            return new HomeController(fakeNewsRepository);
         }
     }
 }
