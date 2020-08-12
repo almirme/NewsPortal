@@ -32,5 +32,10 @@ namespace NewsPortal.Controllers
         {
             return View(_repository);
         }
+
+        public ActionResult NewsList()
+        {
+            return View(_repository);
+        }
     }
 }
