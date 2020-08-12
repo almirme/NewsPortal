@@ -1,6 +1,6 @@
 ﻿@model NewsPortal.Models.NewsArticle
 
-<h2>New</h2>
+<h2>Add News</h2>
 
 @using (Html.BeginForm("Save", "NewsAdmin"))
 {
@@ -20,7 +20,7 @@
         @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Category)
     </div>
-    
+
     @Html.HiddenFor(m => m.Id)
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>

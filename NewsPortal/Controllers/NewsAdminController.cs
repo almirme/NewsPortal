@@ -54,7 +54,7 @@ namespace NewsPortal.Controllers
                 _repository.Update(newsArticle);
             }
 
-            return RedirectToAction(AllNewsForUserView, this.ControllerName);
+            return RedirectToAction("Index", this.ControllerName);
         }
     }
 }

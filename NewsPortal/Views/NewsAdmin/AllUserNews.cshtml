@@ -2,7 +2,7 @@
 
 <h2>All News</h2>
 <p>
-    @Html.ActionLink("Add news", "New", "Customers", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add news", "New", "NewsAdmin", null, new { @class = "btn btn-primary" })
 </p>
 
 @if (!Model.Any())
@@ -11,21 +11,22 @@
 }
 else
 {
-    
-
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>News</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var newsArticle in Model)
             {
-                <tr>
-                    <td>@newsArticle.PublishDate</td>
-                    <td>@newsArticle.Title</td>
-                </tr>
+            <tr>
+                <td>@newsArticle.PublishDate</td>
+                <td>@newsArticle.Title</td>
+                <td>@Html.ActionLink("Edit", "")</td>
+            </tr>
             }
         </tbody>
     </table>
