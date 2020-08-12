@@ -6,7 +6,7 @@
 <h2>All News</h2>
 <ul class="nav navbar-nav margin-15px-0px">
     <li>
-        @Html.ActionLink("Add news", "New", NewsPortal.Common.ControllerName.NewsAdmin,
+        @Html.ActionLink("Add news", NewsPortal.Common.ActionName.NewsAdmin_NewNews, NewsPortal.Common.ControllerName.NewsAdmin,
    null, new { @class = "btn btn-primary" })
 </li>
 <li>
@@ -36,11 +36,17 @@ else
         <tbody>
             @foreach (var newsArticle in Model)
             {
-                <tr>
-                    <td>@newsArticle.PublishDate</td>
-                    <td>@newsArticle.Title</td>
-                    <td>@Html.ActionLink(uiMessages.Edit, "")</td>
-                </tr>
+            <tr>
+                <td>@newsArticle.PublishDate</td>
+                <td>@newsArticle.Title</td>
+                <td>
+                    @Html.ActionLink(uiMessages.Edit,
+                                 NewsPortal.Common.ActionName.NewsAdmin_EditNews,
+                                 NewsPortal.Common.ControllerName.NewsAdmin,
+                                 new { newsArticle.Id },
+                                 null)
+            </td>
+            </tr>
             }
         </tbody>
     </table>

@@ -23,9 +23,19 @@ namespace NewsPortal.Controllers
             return View(ViewName.NewsAdmin_Index, all);
         }
 
-        public ActionResult New()
+        public ActionResult NewNews()
         {
             return View(ViewName.NewsAdmin_NewsForm, new NewsArticle());
+        }
+
+        public ActionResult EditNews(int id)
+        {
+            NewsArticle article = _repository.GetById(id);
+
+            if (article == null)
+                return HttpNotFound();
+
+            return View(ViewName.NewsAdmin_NewsForm, article);
         }
 
         [HttpPost]

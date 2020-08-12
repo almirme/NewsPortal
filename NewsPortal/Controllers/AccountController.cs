@@ -70,7 +70,7 @@ namespace NewsPortal.Controllers
         {
             if (String.IsNullOrWhiteSpace(returnUrl))
             {
-                returnUrl = "/NewsAdmin/Index";
+                returnUrl = "/NewsAdmin/IndexAdmin";
             }
 
             if (!ModelState.IsValid)
