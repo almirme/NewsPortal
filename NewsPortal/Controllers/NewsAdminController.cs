@@ -16,7 +16,7 @@ namespace NewsPortal.Controllers
             _repository = repository;
         }
 
-        public ActionResult Index()
+        public ActionResult IndexAdmin()
         {
             IEnumerable<NewsArticle> all = _repository.GetAllForUser(User.Identity.Name);
 

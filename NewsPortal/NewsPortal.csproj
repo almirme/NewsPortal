@@ -182,6 +182,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Common\ActionName.cs" />
     <Compile Include="Common\ControllerName.cs" />
+    <Compile Include="Common\PartialViewName.cs" />
     <Compile Include="Common\ViewName.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

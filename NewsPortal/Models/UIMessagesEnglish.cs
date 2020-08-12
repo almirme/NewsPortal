@@ -23,5 +23,11 @@ namespace NewsPortal.Models
         public string Search => "Search";
 
         public string Edit => "Edit";
+
+        public string SearchResultFor => "Search Result For";
+
+        public string YourNews => "Your News";
+
+        public string AddNewUser => "Add New User";
     }
 }

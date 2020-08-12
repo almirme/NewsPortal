@@ -8,7 +8,7 @@
 <div class="list-group">
     @foreach (NewsPortal.Models.NewsArticle article in Model.NewsArticles)
     {
-        <a href="#" class="list-group-item">
+        <a href="#" class="list-group-item" onclick="location.href='@Url.Action("SingleNews", "Home", new { article.Id })'">
             <div class="search-list-wrapper">
                 <div class="search-list-image-div">
                     <img class="search-list-image" src="@article.PictureUrl" alt="@article.Title" />

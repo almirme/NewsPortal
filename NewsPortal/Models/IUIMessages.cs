@@ -17,5 +17,9 @@ namespace NewsPortal.Models
         string Edit { get; }
 
         string SearchResultFor { get; }
+
+        string YourNews { get; }
+
+        string AddNewUser { get; }
     }
 }

@@ -7,6 +7,9 @@ namespace NewsPortal.Common
 {
     public static class ActionName
     {
-        public static string NewNews => "NewNews";
+        public static string Home_Index => "Index";
+        public static string Home_NewsList => "NewsList";
+        public static string NewsAdmin_NewNews => "NewNews";
+        public static string NewsAdmin_IndexAdmin => "IndexAdmin";
     }
 }

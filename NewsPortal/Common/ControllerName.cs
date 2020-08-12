@@ -8,5 +8,6 @@ namespace NewsPortal.Common
     public static class ControllerName
     {
         public static string NewsAdmin => "NewsAdmin";
+        public static string Home => "Home";
     }
 }

@@ -10,7 +10,7 @@ namespace NewsPortal.Controllers
     public class HomeController : Controller
     {
         INewsRepository _repository;
-        IUIMessages uiMessages = UIMessages.GetMessagesForLanguage();
+        IUIMessages _uiMessages = UIMessages.GetMessagesForLanguage();
 
         public HomeController(INewsRepository repository)
         {
@@ -36,7 +36,7 @@ namespace NewsPortal.Controllers
             NewsListViewModel newsListView = new NewsListViewModel
             {
                 NewsArticles = articles,
-                ListCriteria = $"{uiMessages.SearchResultFor}: {searchViewModel.SearchTerm}",
+                ListCriteria = $"{_uiMessages.SearchResultFor}: {searchViewModel.SearchTerm}",
             };
 
             return View(newsListView);

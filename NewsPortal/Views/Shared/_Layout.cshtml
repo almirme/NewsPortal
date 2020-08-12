@@ -25,13 +25,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.Partial("_Search", new NewsPortal.Models.SearchViewModel 
-                                                 {  
-                                                    ActionName = "NewsList", 
-                                                    ControllerName = "Home" 
-                                                 })
+                    @* TODO show news categories *@
+                    <li>@Html.Partial(NewsPortal.Common.PartialViewName.Search, 
+                        new NewsPortal.Models.SearchViewModel 
+                        {  
+                            ActionName = NewsPortal.Common.ActionName.Home_NewsList, 
+                            ControllerName = NewsPortal.Common.ControllerName.Home
+                        })
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
