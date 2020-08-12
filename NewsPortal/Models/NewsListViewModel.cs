@@ -9,6 +9,6 @@ namespace NewsPortal.Models
     {
         public List<NewsArticle> NewsArticles { get; set; }
 
-        public string SearchTerm { get; set; }
+        public string ListCriteria { get; set; }
     }
 }

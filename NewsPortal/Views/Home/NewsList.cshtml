@@ -3,7 +3,7 @@
     NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
 }
 
-<h2>@(!String.IsNullOrWhiteSpace(Model.SearchTerm) ? $"Search result for {Model.SearchTerm}" : "Lisa")</h2>
+<h2>@(!String.IsNullOrWhiteSpace(Model.ListCriteria) ? $"Search result for {Model.ListCriteria}" : "")</h2>
 
 <div class="list-group">
     @foreach (NewsPortal.Models.NewsArticle article in Model.NewsArticles)

@@ -65,5 +65,15 @@ namespace NewsPortal.Models
 
             return latestNews;
         }
+
+        public IEnumerable<NewsArticle> GetAllThatContain(string searchTerm)
+        {
+            IEnumerable<NewsArticle> newsSearchResult = from news in _context.NewsArticles
+                                                        where news.Title.Contains(searchTerm) 
+                                                        || news.Content.Contains(searchTerm)
+                                                        select news;
+
+            return newsSearchResult;
+        }
     }
 }

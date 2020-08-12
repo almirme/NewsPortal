@@ -42,6 +42,11 @@ namespace NewsPortal.Tests.Fakes
             return _inMemoryNews.FindAll(article => article.Author == userFullName);
         }
 
+        public IEnumerable<NewsArticle> GetAllThatContain(string searchTerm)
+        {
+            throw new NotImplementedException();
+        }
+
         static string fred = "Fred Astaire";
         static string marlon = "Marlon Brando";
         static string barbara = "Barbara Stanwyck";

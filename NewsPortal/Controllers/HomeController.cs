@@ -28,19 +28,14 @@ namespace NewsPortal.Controllers
             return View(article);
         }
 
-        public ActionResult Search(SearchViewModel searchViewModel)
+        public ActionResult NewsList(SearchViewModel searchViewModel)
         {
-            return View(_repository);
-        }
-
-        public ActionResult NewsList()
-        {
-            List<NewsArticle> articles = _repository.GetLatest(10).ToList();
+            List<NewsArticle> articles = _repository.GetAllThatContain(searchViewModel.SearchTerm).ToList();
 
             NewsListViewModel newsListView = new NewsListViewModel
             {
                 NewsArticles = articles,
-                SearchTerm = ""
+                ListCriteria = searchViewModel.SearchTerm
             };
 
             return View(newsListView);
