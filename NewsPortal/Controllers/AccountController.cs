@@ -68,6 +68,11 @@ namespace NewsPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            if (String.IsNullOrWhiteSpace(returnUrl))
+            {
+                returnUrl = "/NewsAdmin/Index";
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);

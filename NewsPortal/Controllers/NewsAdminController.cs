@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace NewsPortal.Controllers
 {
+    [Authorize]
     public class NewsAdminController : Controller
     {
         INewsRepository _repository;
