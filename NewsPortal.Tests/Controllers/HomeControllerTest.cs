@@ -38,10 +38,10 @@ namespace NewsPortal.Tests.Controllers
 
             List<int> expectedArticles = new List<int> { 2, 1, 0, 4, 5, 6, 3 };
 
-            Assert.IsTrue(AreDataAsExpected<NewsArticle>(newsArticlesInView, 
-                                                         fakeNewsRepository.News,
-                                                         expectedArticles,
-                                                         NewsArticlesAreSame));
+            Assert.IsTrue(TestHelper.AreDataAsExpected<NewsArticle>(newsArticlesInView, 
+                                                                    fakeNewsRepository.News,
+                                                                    expectedArticles,
+                                                                    TestHelper.NewsArticlesAreSame));
         }
 
         [TestMethod]
@@ -55,10 +55,10 @@ namespace NewsPortal.Tests.Controllers
 
             List<int> expectedCategories = new List<int> { 0, 1, 2, 3, 4 };
 
-            Assert.IsTrue(AreDataAsExpected<NewsCategory>(newsCategoriesInView,
-                                                          fakeNewsRepository.Categories,
-                                                          expectedCategories,
-                                                          NewsCategoriesAreSame));
+            Assert.IsTrue(TestHelper.AreDataAsExpected<NewsCategory>(newsCategoriesInView,
+                                                                     fakeNewsRepository.Categories,
+                                                                     expectedCategories,
+                                                                     TestHelper.NewsCategoriesAreSame));
         }
 
         [TestMethod]
@@ -82,7 +82,7 @@ namespace NewsPortal.Tests.Controllers
 
             var newsOnPage = ((NewsArticle)result.Model);
 
-            Assert.IsTrue(NewsArticlesAreSame(newsOnPage, fakeNewsRepository.News[0]));
+            Assert.IsTrue(TestHelper.NewsArticlesAreSame(newsOnPage, fakeNewsRepository.News[0]));
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace NewsPortal.Tests.Controllers
             List<NewsArticle> foundNews = ((NewsListViewModel)result.Model).NewsArticles;
 
             Assert.IsTrue(foundNews.Count == 1);
-            Assert.IsTrue(NewsArticlesAreSame(foundNews[0], fakeNewsRepository.News[3]));
+            Assert.IsTrue(TestHelper.NewsArticlesAreSame(foundNews[0], fakeNewsRepository.News[3]));
         }
 
         [TestMethod]
@@ -141,55 +141,16 @@ namespace NewsPortal.Tests.Controllers
 
             List<int> expectedArticles = new List<int> { 2, 1, 0 };
 
-            Assert.IsTrue(AreDataAsExpected<NewsArticle>(foundNews,
-                                                         fakeNewsRepository.News,
-                                                         expectedArticles,
-                                                         NewsArticlesAreSame));
+            Assert.IsTrue(TestHelper.AreDataAsExpected<NewsArticle>(foundNews,
+                                                                    fakeNewsRepository.News,
+                                                                    expectedArticles,
+                                                                    TestHelper.NewsArticlesAreSame));
         }
 
         private HomeController CreateTestHomeController()
         {
             FakeNewsRepository fakeNewsRepository = new FakeNewsRepository();
             return new HomeController(fakeNewsRepository);
-        }
-
-        private bool NewsArticlesAreSame(NewsArticle article, NewsArticle article2)
-        {
-            return article.Author == article2.Author
-                   && article.Category == article2.Category
-                   && article.Content == article2.Content
-                   && article.Id == article2.Id
-                   && article.PublishDate == article2.PublishDate
-                   && article.Title == article2.Title
-                   && article.PictureUrl == article2.PictureUrl;
-        }
-
-        private bool NewsCategoriesAreSame(NewsCategory category, NewsCategory category2)
-        {
-            return category.Id == category2.Id && category.Name == category2.Name;
-        }
-
-        private bool AreDataAsExpected<T>(List<T> actualData,
-                                          List<T> expectetData,
-                                          List<int> expectedDataOrder,
-                                          Func<T, T, bool> compare)
-        {
-            bool dataAreAsExpected = true;
-
-            if (actualData.Count == expectedDataOrder.Count)
-            {
-                for (int i = 0; i < expectedDataOrder.Count && dataAreAsExpected; i++)
-                {
-                    dataAreAsExpected = compare(expectetData[expectedDataOrder[i]], 
-                                                actualData[i]);
-                }
-            }
-            else
-            {
-                dataAreAsExpected = false;
-            }
-
-            return dataAreAsExpected;
         }
     }
 }

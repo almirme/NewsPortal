@@ -16,7 +16,7 @@ namespace NewsPortal.Controllers
             _repository = repository;
         }
 
-        public ActionResult IndexAdmin(SearchViewModel searchViewModel)
+        public ViewResult IndexAdmin(SearchViewModel searchViewModel)
         {
             IEnumerable<NewsArticle> newsOfAuthor;
             if (String.IsNullOrWhiteSpace(searchViewModel.SearchTerm))
@@ -31,7 +31,7 @@ namespace NewsPortal.Controllers
             return View(ViewName.NewsAdmin_Index, newsOfAuthor);
         }
 
-        public ActionResult NewNews()
+        public ViewResult NewNews()
         {
             NewsFormViewModel newsFormView = new NewsFormViewModel
             {
