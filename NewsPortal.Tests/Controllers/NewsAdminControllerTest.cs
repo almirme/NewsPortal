@@ -12,6 +12,8 @@ using NewsPortal.Tests.Fakes;
 
 namespace NewsPortal.Tests.Controllers
 {
+    // TODO review unit test code and refactor
+
     [TestClass]
     public class NewsAdminControllerTest
     {
