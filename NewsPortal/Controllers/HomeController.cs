@@ -54,7 +54,7 @@ namespace NewsPortal.Controllers
             {
                 NewsArticles = allNewsInCategory,
                 NewsCategories = _repository.GetNewsCategories().ToList(),
-                ListCriteria = $"{_uiMessages.SearchResultFor}: {category}",
+                ListCriteria = $"{category}",
             };
 
             return View(ViewName.Home_NewsList, newsListView);

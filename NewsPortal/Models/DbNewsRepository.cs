@@ -28,18 +28,19 @@ namespace NewsPortal.Models
         public IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews, string category = "")
         {
             IEnumerable<NewsArticle> latestNews = _context.NewsArticles.OrderByDescending(d => d.PublishDate);
-            int totalLatestNews = latestNews.Count();
-
-            if (totalLatestNews < numberOfLatestNews || numberOfLatestNews == 0)
-            {
-                numberOfLatestNews = totalLatestNews;
-            }
 
             if (!String.IsNullOrWhiteSpace(category))
             {
                 latestNews = from news in latestNews
                              where news.Category == category
                              select news;
+            }
+
+            int totalLatestNews = latestNews.Count();
+
+            if (totalLatestNews < numberOfLatestNews || numberOfLatestNews == 0)
+            {
+                numberOfLatestNews = totalLatestNews;
             }
 
             latestNews = latestNews.ToList().GetRange(0, numberOfLatestNews);
