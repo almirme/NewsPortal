@@ -33,7 +33,13 @@ namespace NewsPortal.Controllers
 
         public ActionResult NewNews()
         {
-            return View(ViewName.NewsAdmin_NewsForm, new NewsArticle());
+            NewsFormViewModel newsFormView = new NewsFormViewModel
+            {
+                NewsArticle = new NewsArticle(),
+                NewsCategories = _repository.GetNewsCategories()
+            };
+
+            return View(ViewName.NewsAdmin_NewsForm, newsFormView);
         }
 
         public ActionResult EditNews(int id)
@@ -46,7 +52,13 @@ namespace NewsPortal.Controllers
             }
             else
             {
-                return View(ViewName.NewsAdmin_NewsForm, article);
+                NewsFormViewModel newsFormView = new NewsFormViewModel
+                {
+                    NewsArticle = article,
+                    NewsCategories = _repository.GetNewsCategories()
+                };
+
+                return View(ViewName.NewsAdmin_NewsForm, newsFormView);
             }
         }
 
@@ -56,7 +68,13 @@ namespace NewsPortal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(ViewName.NewsAdmin_NewsForm, newsArticle);
+                NewsFormViewModel newsFormView = new NewsFormViewModel
+                {
+                    NewsArticle = newsArticle,
+                    NewsCategories = _repository.GetNewsCategories()
+                };
+
+                return View(ViewName.NewsAdmin_NewsForm, newsFormView);
             }
 
             if (newsArticle.Id == 0)

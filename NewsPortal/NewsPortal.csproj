@@ -224,6 +224,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsArticle.cs" />
     <Compile Include="Models\NewsCategory.cs" />
+    <Compile Include="Models\NewsFormViewModel.cs" />
     <Compile Include="Models\NewsListViewModel.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\UIMessages.cs" />

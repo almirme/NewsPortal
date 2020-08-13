@@ -1,4 +1,4 @@
-﻿@model NewsPortal.Models.NewsArticle
+﻿@model NewsPortal.Models.NewsFormViewModel
 
 <h2>Add News</h2>
 
@@ -6,27 +6,27 @@
 {
     @Html.ValidationSummary(true, "Please fix the following errors.")
     <div class="form-group">
-        @Html.LabelFor(m => m.Title)
-        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Title)
+        @Html.LabelFor(m => m.NewsArticle.Title)
+        @Html.TextBoxFor(m => m.NewsArticle.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NewsArticle.Title)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Content)
-        @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Content)
+        @Html.LabelFor(m => m.NewsArticle.Content)
+        @Html.TextAreaFor(m => m.NewsArticle.Content, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NewsArticle.Content)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Category)
-        @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Category)
+        @Html.LabelFor(m => m.NewsArticle.Category)
+        @Html.DropDownListFor(m => m.NewsArticle.Category, new SelectList(Model.NewsCategories, "Name", "Name"), "Select news category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NewsArticle.Category)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.PictureUrl)
-        @Html.TextBoxFor(m => m.PictureUrl, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.PictureUrl)
+        @Html.LabelFor(m => m.NewsArticle.PictureUrl)
+        @Html.TextBoxFor(m => m.NewsArticle.PictureUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NewsArticle.PictureUrl)
     </div>
 
-    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.NewsArticle.Id)
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
 }
