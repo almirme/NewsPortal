@@ -44,9 +44,9 @@ namespace NewsPortal.Controllers
             return View(ViewName.Home_NewsList, newsListView);
         }
 
-        public ActionResult NewsInCategory(int categoryId)
+        public ActionResult NewsInCategory(byte Id)
         {
-            string category = _repository.GetNewsCategories().SingleOrDefault(x => x.Id == categoryId).Name;
+            string category = _repository.GetNewsCategories().SingleOrDefault(x => x.Id == Id).Name;
 
             List<NewsArticle> allNewsInCategory = _repository.GetLatest(0, category).ToList();
 
