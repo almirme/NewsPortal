@@ -24,7 +24,7 @@ namespace NewsPortal.Tests.Controllers
             ViewResult result = controller.Index();
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.ViewName == "Index" || result.ViewName == "");
+            Assert.IsTrue(result.ViewName == "Index");
         }
 
         [TestMethod]
@@ -69,7 +69,82 @@ namespace NewsPortal.Tests.Controllers
             ViewResult result = controller.SingleNews(1);
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.ViewName == "Index" || result.ViewName == "");
+            Assert.IsTrue(result.ViewName == "SingleNews");
+        }
+
+        [TestMethod]
+        public void SingleNews_OnRequest_HaveCorrectDataForNews()
+        {
+            FakeNewsRepository fakeNewsRepository = new FakeNewsRepository();
+            HomeController controller = new HomeController(fakeNewsRepository);
+
+            ViewResult result = controller.SingleNews(1);
+
+            var newsOnPage = ((NewsArticle)result.Model);
+
+            Assert.IsTrue(NewsArticlesAreSame(newsOnPage, fakeNewsRepository.News[0]));
+        }
+
+        [TestMethod]
+        public void NewsList_OnRequest_ReturnsCorrectView()
+        {
+            HomeController controller = CreateTestHomeController();
+            SearchViewModel viewModel = new SearchViewModel
+            {
+                SearchTerm = "",
+            };
+
+            ViewResult result = controller.NewsList(viewModel);
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.ViewName == "NewsList");
+        }
+
+        [TestMethod]
+        public void NewsList_AfterSearch_HaveCorrectDataForNews()
+        {
+            FakeNewsRepository fakeNewsRepository = new FakeNewsRepository();
+            HomeController controller = new HomeController(fakeNewsRepository);
+
+            SearchViewModel viewModel = new SearchViewModel
+            {
+                SearchTerm = "Climate change",
+            };
+
+            ViewResult result = controller.NewsList(viewModel);
+
+            List<NewsArticle> foundNews = ((NewsListViewModel)result.Model).NewsArticles;
+
+            Assert.IsTrue(foundNews.Count == 1);
+            Assert.IsTrue(NewsArticlesAreSame(foundNews[0], fakeNewsRepository.News[3]));
+        }
+
+        [TestMethod]
+        public void NewsInCategory_OnRequest_ReturnsCorrectView()
+        {
+            HomeController controller = CreateTestHomeController();
+
+            ViewResult result = controller.NewsInCategory(1);
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.ViewName == "NewsList");
+        }
+
+        [TestMethod]
+        public void NewsInCategory_AfterChoosingNewsCategory_HaveAllNewsForChosenCategory()
+        {
+            FakeNewsRepository fakeNewsRepository = new FakeNewsRepository();
+            HomeController controller = new HomeController(fakeNewsRepository);
+
+            ViewResult result = controller.NewsInCategory(1);
+            List<NewsArticle> foundNews = ((NewsListViewModel)result.Model).NewsArticles;
+
+            List<int> expectedArticles = new List<int> { 2, 1, 0 };
+
+            Assert.IsTrue(AreDataAsExpected<NewsArticle>(foundNews,
+                                                         fakeNewsRepository.News,
+                                                         expectedArticles,
+                                                         NewsArticlesAreSame));
         }
 
         private HomeController CreateTestHomeController()

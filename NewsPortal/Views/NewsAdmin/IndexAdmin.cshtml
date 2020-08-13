@@ -10,12 +10,12 @@
    null, new { @class = "btn btn-primary" })
 </li>
 <li>
-    @Html.Partial("_Search",
-new NewsPortal.Models.SearchViewModel
-{
-   ActionName = NewsPortal.Common.ViewName.NewsAdmin_Index,
-   ControllerName = NewsPortal.Common.ControllerName.NewsAdmin
-})
+    @Html.Partial(NewsPortal.Common.PartialViewName.Search,
+                    new NewsPortal.Models.SearchViewModel
+                    {
+                       ActionName = NewsPortal.Common.ViewName.NewsAdmin_Index,
+                       ControllerName = NewsPortal.Common.ControllerName.NewsAdmin
+                    })
 </li>
 </ul>
 

@@ -34,17 +34,17 @@ namespace NewsPortal.Controllers
                 NewsArticles = latestNewsArticles,
             };
 
-            return View(commonView);
+            return View(ActionName.Home_Index, commonView);
         }
 
-        public ActionResult SingleNews(int id)
+        public ViewResult SingleNews(int id)
         {
             NewsArticle article = _repository.GetById(id);
 
-            return View(article);
+            return View(ActionName.Home_SingleNews, article);
         }
 
-        public ActionResult NewsList(SearchViewModel searchViewModel)
+        public ViewResult NewsList(SearchViewModel searchViewModel)
         {
             List<NewsArticle> articles = _repository.GetAllThatContain(searchViewModel.SearchTerm).ToList();
 
@@ -58,7 +58,7 @@ namespace NewsPortal.Controllers
             return View(ViewName.Home_NewsList, newsListView);
         }
 
-        public ActionResult NewsInCategory(byte Id)
+        public ViewResult NewsInCategory(byte Id)
         {
             string category = _repository.GetNewsCategories().SingleOrDefault(x => x.Id == Id).Name;
 
