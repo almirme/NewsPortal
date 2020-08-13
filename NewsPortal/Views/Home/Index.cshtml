@@ -9,7 +9,9 @@
     <h2>| @newsCategory.Name</h2>
     <div class="row">
         @{
-            IEnumerable<NewsPortal.Models.NewsArticle> latestNewsForCategory = Model.NewsArticles.Where(a => a.Category == newsCategory.Name).ToList();
+            IEnumerable<NewsPortal.Models.NewsArticle> latestNewsForCategory = 
+                Model.NewsArticles.Where(a => a.Category == newsCategory.Name).ToList();
+
             foreach (NewsPortal.Models.NewsArticle article in latestNewsForCategory)
             {
                 <div class="col-md-4">

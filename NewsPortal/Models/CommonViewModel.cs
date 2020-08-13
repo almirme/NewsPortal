@@ -9,5 +9,6 @@ namespace NewsPortal.Models
     {
         public IEnumerable<NewsArticle> NewsArticles { get; set; }
         public IEnumerable<NewsCategory> NewsCategories { get; set; }
+        public IUIMessages UIMessages { get; set; }
     }
 }
