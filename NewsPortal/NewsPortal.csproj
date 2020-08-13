@@ -219,6 +219,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DbNewsRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\CommonViewModel.cs" />
     <Compile Include="Models\INewsRepository.cs" />
     <Compile Include="Models\UI\IUIMessages.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

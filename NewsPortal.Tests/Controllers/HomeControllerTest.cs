@@ -14,17 +14,29 @@ namespace NewsPortal.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index_OnRequest_ReturnsView()
+        public void Index_OnRequest_ReturnsCorrectView()
         {
             HomeController controller = CreateTestHomeController();
 
             ViewResult result = controller.Index();
 
             Assert.IsNotNull(result);
+            Assert.IsTrue(result.ViewName == "Index" || result.ViewName == "");
         }
 
         [TestMethod]
-        public void Index_OnRequest_ReturnsLatestNews()
+        public void Index_WhenDisplayed_HaveThreeLatestNewsForEachCategory()
+        {
+            HomeController controller = CreateTestHomeController();
+
+            ViewResult result = controller.Index();
+            //result.Model
+
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void Index_WhenDisplayed_HaveAllNewsCategories()
         {
             HomeController controller = CreateTestHomeController();
 

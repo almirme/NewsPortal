@@ -20,7 +20,21 @@ namespace NewsPortal.Controllers
 
         public ViewResult Index()
         {
-            return View(_repository);
+            var newsCategories = _repository.GetNewsCategories().ToList();
+            List<NewsArticle> latestNewsArticles = new List<NewsArticle>();
+
+            foreach (var newsCategory in newsCategories)
+            {
+                latestNewsArticles.AddRange(_repository.GetLatest(numberOfLatestNews: 3, newsCategory.Name));
+            }
+
+            CommonViewModel commonView = new CommonViewModel
+            {
+                NewsCategories = newsCategories,
+                NewsArticles = latestNewsArticles,
+            };
+
+            return View(commonView);
         }
 
         public ActionResult SingleNews(int id)

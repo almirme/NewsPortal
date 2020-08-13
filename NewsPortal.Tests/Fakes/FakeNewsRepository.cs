@@ -11,8 +11,25 @@ namespace NewsPortal.Tests.Fakes
     {
         public IEnumerable<NewsArticle> GetLatest(int numberOfLatestNews, string category)
         {
-            List<NewsArticle> articlesByDate = _inMemoryNews.OrderBy(article => article.PublishDate).ToList();
-            return articlesByDate.GetRange(0, numberOfLatestNews);
+            IEnumerable<NewsArticle> latestNews = _inMemoryNews.OrderByDescending(a => a.PublishDate);
+
+            if (!String.IsNullOrWhiteSpace(category))
+            {
+                latestNews = from news in latestNews
+                             where news.Category == category
+                             select news;
+            }
+
+            int totalLatestNews = latestNews.Count();
+
+            if (totalLatestNews < numberOfLatestNews || numberOfLatestNews == 0)
+            {
+                numberOfLatestNews = totalLatestNews;
+            }
+
+            latestNews = latestNews.ToList().GetRange(0, numberOfLatestNews);
+
+            return latestNews;
         }
 
         public void AddNew(NewsArticle newsArticle)
