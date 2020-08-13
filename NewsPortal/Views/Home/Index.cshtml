@@ -10,7 +10,8 @@
     <h2>| @newsCategory.Name</h2>
     <div class="row">
         @{
-            IEnumerable<NewsPortal.Models.NewsArticle> news = Model.GetLatest(3, newsCategory.Name);
+            IEnumerable<NewsPortal.Models.NewsArticle> news = Model.GetLatest(numberOfLatestNews: 3, 
+                                                                              newsCategory.Name);
             foreach (NewsPortal.Models.NewsArticle article in news)
             {
                 <div class="col-md-4">
