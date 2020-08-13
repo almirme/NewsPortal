@@ -1,18 +1,22 @@
 ﻿@model NewsPortal.Models.INewsRepository
 @{
     NewsPortal.Models.IUIMessages uiMessages = NewsPortal.Models.UIMessages.GetMessagesForLanguage();
+    List<NewsPortal.Models.NewsCategory> newsCategories = Model.GetNewsCategories().ToList();
 }
 
 <div><h3>@uiMessages.WelcomeToWebsiteMessage</h3></div>
-<div class="row">
-@{
-    IEnumerable<NewsPortal.Models.NewsArticle> news = Model.GetLatest(3);
-
-    foreach (NewsPortal.Models.NewsArticle article in news)
-    {
-        <div class="col-md-4">
-            @Html.Partial("_ArticlePreview", article)
-        </div>
-    }
+@foreach (NewsPortal.Models.NewsCategory newsCategory in newsCategories)
+{
+    <h2>| @newsCategory.Name</h2>
+    <div class="row">
+        @{
+            IEnumerable<NewsPortal.Models.NewsArticle> news = Model.GetLatest(3, newsCategory.Name);
+            foreach (NewsPortal.Models.NewsArticle article in news)
+            {
+                <div class="col-md-4">
+                    @Html.Partial("_ArticlePreview", article)
+                </div>
+            }
+        }
+    </div>
 }
-</div>
